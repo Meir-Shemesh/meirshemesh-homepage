@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meir Shemesh</title>
+<meta name="description" content="Meir Shemesh - strategic and intelligence analysis, AI project orchestration, and ecological innovation. Integrated solutions to complex challenges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3EFE8;
+    --bg-elevated: #FFFDFA;
+    --text: #221F1B;
+    --text-muted: #6D675E;
+    --border: #E4DDD0;
+    --brand: #7A2E2A;
+    --hero-bg: #7A2E2A;
+    --hero-text: #FFFDFA;
+    --cat-purple: #5C3D82;
+    --cat-blue: #185FA5;
+    --cat-green: #0F6E56;
+    --cat-coral: #993C1D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16140F;
+      --bg-elevated: #211E18;
+      --text: #ECE7DD;
+      --text-muted: #A89F91;
+      --border: #3A352B;
+      --brand: #D68B86;
+      --hero-bg: #4A1E1B;
+      --hero-text: #F3EFE8;
+      --cat-purple: #C9A6E8;
+      --cat-blue: #8FC0F0;
+      --cat-green: #6FD3B8;
+      --cat-coral: #E8956E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16140F;
+    --bg-elevated: #211E18;
+    --text: #ECE7DD;
+    --text-muted: #A89F91;
+    --border: #3A352B;
+    --brand: #D68B86;
+    --hero-bg: #4A1E1B;
+    --hero-text: #F3EFE8;
+    --cat-purple: #C9A6E8;
+    --cat-blue: #8FC0F0;
+    --cat-green: #6FD3B8;
+    --cat-coral: #E8956E;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Assistant", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .site-name { font-weight: 800; font-size: 1.15rem; }
+  .top-nav nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .top-nav nav a { color: var(--text-muted); font-weight: 600; }
+  .top-nav nav a:hover { color: var(--brand); }
+  .lang-switch {
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .3rem 1rem;
+    color: var(--text);
+  }
+  .lang-switch:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-text);
+    text-align: center;
+    padding: 4rem 1.5rem 3.5rem;
+  }
+  .avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+  .hero h1 { margin: .25rem 0; font-size: 2.3rem; }
+  .hero .motto { margin: 0; font-size: 1.15rem; opacity: .9; }
+
+  section { max-width: 880px; margin: 0 auto; padding: 3.5rem 1.5rem; }
+  section h2 {
+    font-size: 1.6rem;
+    margin: 0 0 1.5rem;
+    padding-inline-start: .75rem;
+    border-inline-start: 4px solid var(--brand);
+  }
+
+  #about p { font-size: 1.08rem; max-width: 740px; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+  }
+  .skill-icon { width: 38px; height: 38px; color: var(--skill-color); margin-bottom: .85rem; }
+  .skill-card h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
+  .skill-card p { margin: 0; color: var(--text-muted); font-size: .93rem; }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .activities-grid { grid-template-columns: 1fr; }
+  }
+  .activity-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-inline-start: 5px solid var(--card-color);
+    border-radius: 10px;
+    padding: 1.3rem 1.5rem;
+  }
+  .activity-card h3 { margin: 0 0 .6rem; font-size: 1.1rem; }
+  .activity-card .summary { margin: 0 0 .85rem; color: var(--text-muted); font-size: .95rem; }
+  .activity-card .read-more { font-weight: 700; color: var(--card-color); }
+  details.activity-card summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+  details.activity-card summary::-webkit-details-marker { display: none; }
+  details.activity-card summary::marker { content: ""; }
+  details.activity-card summary h3 { margin: 0; }
+  details.activity-card .read-more-label {
+    font-weight: 700;
+    color: var(--card-color);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  details.activity-card .chevron { display: inline-block; transition: transform .2s; }
+  details.activity-card[open] .chevron { transform: rotate(90deg); }
+  details.activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+
+  .contact { text-align: center; }
+  .contact .email { font-size: 1.25rem; font-weight: 700; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: var(--text-muted);
+    font-size: .85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <span class="site-name">Meir Shemesh</span>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#activities">Activities</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="lang-switch" href="../he/index.html" hreflang="he" lang="he" dir="rtl">עב</a>
+</header>
+
+<section class="hero">
+  <div class="avatar-placeholder" aria-hidden="true">MS</div>
+  <h1>Meir Shemesh</h1>
+  <p class="motto">Integrated solutions to complex challenges</p>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>
+    Integrated solutions to complex challenges - this principle guides all
+    of my professional work. After roughly a decade in teaching and
+    education, my professional path began with many years of service at
+    the Office of the Prime Minister of Israel as an intelligence analyst
+    and manager, continued with the management of an antisemitism
+    monitoring project, and since 2020 has centered on technology
+    consulting and management. In 2024 I founded AvantGuard
+    Eco-Technological Solutions as Co-Founder and CEO, driven by the
+    belief that advanced technology can bridge human, economic and
+    environmental needs. I am fluent in Hebrew, English and German.
+  </p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card" style="--skill-color: var(--cat-purple)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="20" y2="20"/></svg>
+      <h3>Strategic &amp; Intelligence Analysis</h3>
+      <p>Identifying the precise question behind every need, and distilling multi-source information into a clear, actionable picture.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-blue)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg>
+      <h3>AI &amp; Technology-Project Orchestration</h3>
+      <p>Managing AI-orchestrated development processes, combining managerial oversight with advanced technological tools.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-green)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 12 10 4 20 4c0 10-8 16-16 16Z"/><line x1="4" y1="20" x2="13" y2="11"/></svg>
+      <h3>Ecological &amp; Sustainable Innovation</h3>
+      <p>Adapting technologies proven in one field to address environmental and agricultural challenges in another.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-coral)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="13"/><line x1="12" y1="13" x2="5" y2="16.5"/><line x1="12" y1="13" x2="19" y2="16.5"/></svg>
+      <h3>Organizational &amp; Operational Management</h3>
+      <p>Managing teams, processes and resources across complex, multi-stage projects.</p>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <h2>Activities</h2>
+  <div class="activities-grid">
+
+    <article class="activity-card" style="--card-color: var(--cat-green)">
+      <h3>AvantGuard</h3>
+      <p class="summary">Innovative eco-technological solutions, including an AI-based laser system to deter cranes in the Hula Valley.</p>
+      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">Read more →</a>
+    </article>
+
+    <article class="activity-card" style="--card-color: var(--cat-blue)">
+      <h3>Geopolitics Tracker</h3>
+      <p class="summary">
+        A system I built from scratch, tracking nine leading world
+        newspapers daily and generating cross-source comparisons of how
+        each frames the same geopolitical events. The project also
+        doubles as a hands-on exercise in managing AI-orchestrated
+        development - an approach that now shapes my consulting work as
+        well.
+      </p>
+      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">Read more →</a>
+    </article>
+
+    <details class="activity-card" style="--card-color: var(--brand)">
+      <summary>
+        <h3>Technology Consulting and Management</h3>
+        <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>
+      </summary>
+      <p class="full-text">
+        Integrated solutions to complex challenges - this principle guides
+        my consulting work as well. I bring to every project a
+        technological approach paired with years of managerial experience
+        in complex, technology-driven initiatives, along with the ability
+        to recognize a technology proven in one field and adapt it -
+        drawing on its distinctive traits and relative strengths - to meet
+        a completely different challenge elsewhere.
+      </p>
+    </details>
+
+    <details class="activity-card" style="--card-color: var(--cat-purple)">
+      <summary>
+        <h3>Competitive Intelligence</h3>
+        <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>
+      </summary>
+      <p class="full-text">
+        Competitive intelligence services that combine deep understanding
+        of the intelligence world with dedicated research and
+        investigations. Every engagement begins by precisely defining the
+        client's actual intelligence question - whether it concerns
+        employees, candidates, potential partners or competitors - and
+        proceeds through information gathering using a range of
+        open-source intelligence tools and additional databases. The
+        service is provided to business clients worldwide, with findings
+        delivered clearly and precisely at the highest standard, including
+        practical recommendations. The same multi-source analysis
+        methodology underlying this service also carries through into
+        other technology projects I lead.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p><a class="email" href="mailto:meir@meirshemesh.com">meir@meirshemesh.com</a></p>
+</section>
+
+<footer>© Meir Shemesh</footer>
+
+</body>
+</html>

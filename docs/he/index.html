@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מאיר שמש</title>
+<meta name="description" content="מאיר שמש - ניתוח אסטרטגי ומודיעיני, הכוונת פרויקטי בינה מלאכותית, וחדשנות אקולוגית. פתרונות משולבים לאתגרים מורכבים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3EFE8;
+    --bg-elevated: #FFFDFA;
+    --text: #221F1B;
+    --text-muted: #6D675E;
+    --border: #E4DDD0;
+    --brand: #7A2E2A;
+    --hero-bg: #7A2E2A;
+    --hero-text: #FFFDFA;
+    --cat-purple: #5C3D82;
+    --cat-blue: #185FA5;
+    --cat-green: #0F6E56;
+    --cat-coral: #993C1D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16140F;
+      --bg-elevated: #211E18;
+      --text: #ECE7DD;
+      --text-muted: #A89F91;
+      --border: #3A352B;
+      --brand: #D68B86;
+      --hero-bg: #4A1E1B;
+      --hero-text: #F3EFE8;
+      --cat-purple: #C9A6E8;
+      --cat-blue: #8FC0F0;
+      --cat-green: #6FD3B8;
+      --cat-coral: #E8956E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16140F;
+    --bg-elevated: #211E18;
+    --text: #ECE7DD;
+    --text-muted: #A89F91;
+    --border: #3A352B;
+    --brand: #D68B86;
+    --hero-bg: #4A1E1B;
+    --hero-text: #F3EFE8;
+    --cat-purple: #C9A6E8;
+    --cat-blue: #8FC0F0;
+    --cat-green: #6FD3B8;
+    --cat-coral: #E8956E;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Assistant", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .site-name { font-weight: 800; font-size: 1.15rem; }
+  .top-nav nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .top-nav nav a { color: var(--text-muted); font-weight: 600; }
+  .top-nav nav a:hover { color: var(--brand); }
+  .lang-switch {
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .3rem 1rem;
+    color: var(--text);
+  }
+  .lang-switch:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-text);
+    text-align: center;
+    padding: 4rem 1.5rem 3.5rem;
+  }
+  .avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+  .hero h1 { margin: .25rem 0; font-size: 2.3rem; }
+  .hero .motto { margin: 0; font-size: 1.15rem; opacity: .9; }
+
+  section { max-width: 880px; margin: 0 auto; padding: 3.5rem 1.5rem; }
+  section h2 {
+    font-size: 1.6rem;
+    margin: 0 0 1.5rem;
+    padding-inline-start: .75rem;
+    border-inline-start: 4px solid var(--brand);
+  }
+
+  #about p { font-size: 1.08rem; max-width: 740px; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+  }
+  .skill-icon { width: 38px; height: 38px; color: var(--skill-color); margin-bottom: .85rem; }
+  .skill-card h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
+  .skill-card p { margin: 0; color: var(--text-muted); font-size: .93rem; }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .activities-grid { grid-template-columns: 1fr; }
+  }
+  .activity-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-inline-start: 5px solid var(--card-color);
+    border-radius: 10px;
+    padding: 1.3rem 1.5rem;
+  }
+  .activity-card h3 { margin: 0 0 .6rem; font-size: 1.1rem; }
+  .activity-card .summary { margin: 0 0 .85rem; color: var(--text-muted); font-size: .95rem; }
+  .activity-card .read-more { font-weight: 700; color: var(--card-color); }
+  details.activity-card summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+  details.activity-card summary::-webkit-details-marker { display: none; }
+  details.activity-card summary::marker { content: ""; }
+  details.activity-card summary h3 { margin: 0; }
+  details.activity-card .read-more-label {
+    font-weight: 700;
+    color: var(--card-color);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  details.activity-card .chevron { display: inline-block; transition: transform .2s; }
+  details.activity-card[open] .chevron { transform: rotate(90deg); }
+  details.activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+
+  .contact { text-align: center; }
+  .contact .email { font-size: 1.25rem; font-weight: 700; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: var(--text-muted);
+    font-size: .85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <span class="site-name">מאיר שמש</span>
+  <nav>
+    <a href="#about">אודות</a>
+    <a href="#activities">פעילויות</a>
+    <a href="#skills">כישורים</a>
+    <a href="#contact">קשר</a>
+  </nav>
+  <a class="lang-switch" href="../en/index.html" hreflang="en" lang="en" dir="ltr">EN</a>
+</header>
+
+<section class="hero">
+  <div class="avatar-placeholder" aria-hidden="true">מ״ש</div>
+  <h1>מאיר שמש</h1>
+  <p class="motto">פתרונות משולבים לאתגרים מורכבים</p>
+</section>
+
+<section id="about">
+  <h2>אודות</h2>
+  <p>
+    פתרונות משולבים לאתגרים מורכבים - עיקרון זה מנחה את כל עבודתי המקצועית.
+    לאחר כעשור של עיסוק בהוראה ובחינוך, מסלולי המקצועי החל בשירות רב-שנים
+    במשרד ראש הממשלה כאנליסט ומנהל מודיעין, המשיך בניהול פרויקט לניטור
+    אנטישמיות, ומאז 2020 מתמקד בייעוץ וניהול טכנולוגיות. ב-2024 ייסדתי
+    כשותף מייסד ומנכ"ל את AvantGuard Eco-Technological Solutions, מתוך
+    אמונה שטכנולוגיה מתקדמת יכולה לגשר בין צרכים אנושיים, כלכליים
+    וסביבתיים. אני דובר עברית, אנגלית וגרמנית.
+  </p>
+</section>
+
+<section id="skills">
+  <h2>כישורים</h2>
+  <div class="skills-grid">
+    <div class="skill-card" style="--skill-color: var(--cat-purple)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="20" y2="20"/></svg>
+      <h3>ניתוח אסטרטגי ומודיעיני</h3>
+      <p>זיהוי הצורך המדויק שמאחורי כל שאלה, ומיצוי מידע רב-מקורי לכדי תמונת מצב ברורה ופעילה.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-blue)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg>
+      <h3>הכוונת פרויקטי בינה מלאכותית</h3>
+      <p>ניהול תהליכי פיתוח מונחי בינה מלאכותית, תוך שילוב בין ראייה ניהולית לכלים טכנולוגיים מתקדמים.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-green)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 12 10 4 20 4c0 10-8 16-16 16Z"/><line x1="4" y1="20" x2="13" y2="11"/></svg>
+      <h3>חדשנות אקולוגית וברת-קיימא</h3>
+      <p>התאמת טכנולוגיות מוכחות מתחום אחד למענה על אתגרים סביבתיים וחקלאיים בתחום אחר.</p>
+    </div>
+    <div class="skill-card" style="--skill-color: var(--cat-coral)">
+      <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="13"/><line x1="12" y1="13" x2="5" y2="16.5"/><line x1="12" y1="13" x2="19" y2="16.5"/></svg>
+      <h3>ניהול ארגוני ותפעולי</h3>
+      <p>ניהול צוותים, תהליכים ומשאבים לאורך פרויקטים מורכבים ורב-שלביים.</p>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <h2>תחומי פעילות</h2>
+  <div class="activities-grid">
+
+    <article class="activity-card" style="--card-color: var(--cat-green)">
+      <h3>AvantGuard</h3>
+      <p class="summary">פתרונות אקו-טכנולוגיים חדשניים, ובהם מערכת לייזר מבוססת AI להרחקת עגורים בעמק החולה.</p>
+      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">קרא עוד ←</a>
+    </article>
+
+    <article class="activity-card" style="--card-color: var(--cat-blue)">
+      <h3>Geopolitics Tracker</h3>
+      <p class="summary">
+        מערכת שפיתחתי מן היסוד, המנטרת יומיום תשעה עיתונים מובילים בעולם
+        ומפיקה השוואה בין המקורות השונים והאופן שבו כל אחד מהם ממסגר את
+        אותם אירועים גאופוליטיים. פרויקט זה מהווה גם תרגיל מעשי בניהול
+        תהליכי פיתוח מונחי בינה מלאכותית - גישה שכבר מעצבת גם את עבודת
+        הייעוץ שלי.
+      </p>
+      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">קרא עוד ←</a>
+    </article>
+
+    <details class="activity-card" style="--card-color: var(--brand)">
+      <summary>
+        <h3>ייעוץ וניהול טכנולוגיות</h3>
+        <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
+      </summary>
+      <p class="full-text">
+        פתרונות משולבים לאתגרים מורכבים - עיקרון זה מנחה גם את עבודת
+        הייעוץ שלי. אני מביא לכל פרויקט שילוב של גישה טכנולוגית וניסיון
+        ניהולי רב-שנים בפרויקטים מורכבים משולבי-טכנולוגיה, לצד יכולת
+        לזהות טכנולוגיה שהוכיחה את עצמה בתחום אחד ולהתאימה, תוך שימוש
+        במאפייניה ויתרונותיה היחסיים, למענה לאתגרים בתחום שונה לגמרי.
+      </p>
+    </details>
+
+    <details class="activity-card" style="--card-color: var(--cat-purple)">
+      <summary>
+        <h3>מודיעין תחרותי</h3>
+        <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
+      </summary>
+      <p class="full-text">
+        מתן שירותי מודיעין תחרותי, המשלבים הבנה עמוקה של העולם המודיעיני
+        עם ביצוע מחקרים וחקירות ייחודיים. כל פרויקט נפתח במיצוי מדויק של
+        הצורך - הגדרת השאלה המודיעינית שהלקוח נדרש למענה עליה, בין אם
+        עניינה מועסקים, מועמדים, שותפים פוטנציאליים או מתחרים - וממשיך
+        באיסוף מידע באמצעות מגוון כלים מעולם המודיעין הגלוי ומאגרי מידע
+        נוספים. השירות ניתן ללקוחות עסקיים ברחבי העולם, והתוצר מונגש
+        בבהירות ובדיוק ברמה הגבוהה ביותר, כולל המלצות מעשיות. מתודולוגיית
+        ניתוח המידע הרב-מקורי העומדת בבסיס השירות הזה מלווה אותי גם
+        בפרויקטים טכנולוגיים נוספים שאני מוביל.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>יצירת קשר</h2>
+  <p><a class="email" href="mailto:meir@meirshemesh.com">meir@meirshemesh.com</a></p>
+</section>
+
+<footer>© מאיר שמש</footer>
+
+</body>
+</html>
