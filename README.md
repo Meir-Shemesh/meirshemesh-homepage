@@ -7,7 +7,7 @@
 - `docs/he/index.html` - עמוד הבית בעברית (ברירת מחדל)
 - `docs/en/index.html` - עמוד הבית באנגלית
 - `docs/index.html` - redirect אוטומטי לגרסה העברית
-- `docs/assets/images/` - תמונות (עדיין ריק)
+- `docs/assets/images/` - תמונת-פרופיל (`meir-photo.jpg`), לוגו מקור (`MS_Logo.png`) ועותק קטן לניווט (`MS_Logo-128.png`)
 
 פרטים נוספים ב-[CLAUDE.md](CLAUDE.md).
 

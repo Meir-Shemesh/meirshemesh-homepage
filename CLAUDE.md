@@ -13,7 +13,9 @@ docs/
   index.html       redirect אוטומטי ל-he/index.html (meta refresh + JS fallback + קישור ידני)
   he/index.html     עמוד הבית בעברית - ברירת המחדל, RTL
   en/index.html     עמוד הבית באנגלית, LTR
-  assets/images/    מקום ללוגו/תמונת-אווטאר עתידיים (עדיין ריק)
+  assets/images/    meir-photo.jpg (תמונת-פרופיל 480x480, מוצגת ב-hero כ-.avatar-photo בגודל 120px)
+                    MS_Logo.png (לוגו מקור 1024x1024 - נכס-מקור בלבד, לא מוצג ישירות; לשימוש עתידי, למשל favicon)
+                    MS_Logo-128.png (עותק 128x128 של הלוגו, מוצג בניווט העליון כ-.site-logo בגודל 32px)
 ```
 
 - `he/index.html` ו-`en/index.html` הם קבצים עצמאיים לגמרי, כל אחד עם `<style>` inline משלו. אין stylesheet משותף, אין templating, אין build - זהו עיצוב מכוון, לא פער שצריך לתקן. כל שינוי עיצובי צריך להיעשות בשני הקבצים בנפרד.
@@ -33,6 +35,7 @@ docs/
 | `--border` | `#E4DDD0` | קווים מפרידים |
 | `--brand` | `#7A2E2A` | בורדו - accent, קישורים, כותרות סעיפים |
 | `--hero-bg` / `--hero-text` | `#7A2E2A` / `#FFFDFA` | רקע ה-hero (עומד בפני עצמו, לא נגזר מ-`--brand` כדי שישאר "בורדו מלא" גם ב-dark mode) |
+| `--avatar-shadow` | `0 6px 18px rgba(0,0,0,.30)` | צל תמונת-הפרופיל ב-hero (חזק יותר, `.55`, ב-dark mode) |
 | `--cat-purple` | `#5C3D82` | ניתוח אסטרטגי / מודיעין תחרותי |
 | `--cat-blue` | `#185FA5` | AI / Geopolitics Tracker |
 | `--cat-green` | `#0F6E56` | אקולוגיה / AvantGuard |

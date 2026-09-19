@@ -18,6 +18,7 @@
     --brand: #7A2E2A;
     --hero-bg: #7A2E2A;
     --hero-text: #FFFDFA;
+    --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .30);
     --cat-purple: #5C3D82;
     --cat-blue: #185FA5;
     --cat-green: #0F6E56;
@@ -33,6 +34,7 @@
       --brand: #D68B86;
       --hero-bg: #4A1E1B;
       --hero-text: #F3EFE8;
+      --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .55);
       --cat-purple: #C9A6E8;
       --cat-blue: #8FC0F0;
       --cat-green: #6FD3B8;
@@ -48,6 +50,7 @@
     --brand: #D68B86;
     --hero-bg: #4A1E1B;
     --hero-text: #F3EFE8;
+    --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .55);
     --cat-purple: #C9A6E8;
     --cat-blue: #8FC0F0;
     --cat-green: #6FD3B8;
@@ -79,7 +82,8 @@
     top: 0;
     z-index: 10;
   }
-  .site-name { font-weight: 800; font-size: 1.15rem; }
+  .site-name { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1.15rem; }
+  .site-logo { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
   .top-nav nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   .top-nav nav a { color: var(--text-muted); font-weight: 600; }
   .top-nav nav a:hover { color: var(--brand); }
@@ -98,18 +102,15 @@
     text-align: center;
     padding: 4rem 1.5rem 3.5rem;
   }
-  .avatar-placeholder {
+  .avatar-photo {
+    display: block;
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    object-fit: cover;
     margin: 0 auto 1.25rem;
-    background: rgba(255,255,255,.12);
-    border: 2px solid rgba(255,255,255,.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 800;
+    border: 2px solid color-mix(in srgb, var(--hero-text) 50%, transparent);
+    box-shadow: var(--avatar-shadow);
   }
   .hero h1 { margin: .25rem 0; font-size: 2.3rem; }
   .hero .motto { margin: 0; font-size: 1.15rem; opacity: .9; }
@@ -195,7 +196,7 @@
 <body>
 
 <header class="top-nav">
-  <span class="site-name">מאיר שמש</span>
+  <span class="site-name"><img class="site-logo" src="../assets/images/MS_Logo-128.png" alt="לוגו מאיר שמש" width="32" height="32">מאיר שמש</span>
   <nav>
     <a href="#about">אודות</a>
     <a href="#activities">פעילויות</a>
@@ -206,7 +207,7 @@
 </header>
 
 <section class="hero">
-  <div class="avatar-placeholder" aria-hidden="true">מ״ש</div>
+  <img class="avatar-photo" src="../assets/images/meir-photo.jpg" alt="מאיר שמש" width="120" height="120">
   <h1>מאיר שמש</h1>
   <p class="motto">פתרונות משולבים לאתגרים מורכבים</p>
 </section>
