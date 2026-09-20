@@ -83,7 +83,7 @@
     z-index: 10;
   }
   .site-name { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1.15rem; }
-  .site-logo { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
+  .site-logo { width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0; }
   .top-nav nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   .top-nav nav a { color: var(--text-muted); font-weight: 600; }
   .top-nav nav a:hover { color: var(--brand); }
@@ -191,12 +191,26 @@
     font-size: .85rem;
     border-top: 1px solid var(--border);
   }
+
+  @media (min-width: 1024px) {
+    section h2 { font-size: 2rem; }
+    #about p { font-size: 1.3rem; }
+    .skill-icon { width: 46px; height: 46px; }
+    .skill-card h3 { font-size: 1.25rem; }
+    .skill-card p { font-size: 1.1rem; }
+    .activity-card h3 { font-size: 1.3rem; }
+    .activity-card .summary,
+    details.activity-card .full-text { font-size: 1.12rem; }
+    .activity-card .read-more,
+    details.activity-card .read-more-label { font-size: 1.1rem; }
+    .contact .email { font-size: 1.5rem; }
+  }
 </style>
 </head>
 <body>
 
 <header class="top-nav">
-  <span class="site-name"><img class="site-logo" src="../assets/images/MS_Logo-128.png" alt="Meir Shemesh logo" width="32" height="32">Meir Shemesh</span>
+  <span class="site-name"><img class="site-logo" src="../assets/images/MS_Logo-128.png" alt="Meir Shemesh logo" width="44" height="44">Meir Shemesh</span>
   <nav>
     <a href="#about">About</a>
     <a href="#activities">Activities</a>
@@ -277,7 +291,7 @@
       <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">Read more →</a>
     </article>
 
-    <details class="activity-card" style="--card-color: var(--brand)">
+    <details open class="activity-card" style="--card-color: var(--brand)">
       <summary>
         <h3>Technology Consulting and Management</h3>
         <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>
@@ -293,7 +307,7 @@
       </p>
     </details>
 
-    <details class="activity-card" style="--card-color: var(--cat-purple)">
+    <details open class="activity-card" style="--card-color: var(--cat-purple)">
       <summary>
         <h3>Competitive Intelligence</h3>
         <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>

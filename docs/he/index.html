@@ -83,7 +83,7 @@
     z-index: 10;
   }
   .site-name { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1.15rem; }
-  .site-logo { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
+  .site-logo { width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0; }
   .top-nav nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   .top-nav nav a { color: var(--text-muted); font-weight: 600; }
   .top-nav nav a:hover { color: var(--brand); }
@@ -191,12 +191,26 @@
     font-size: .85rem;
     border-top: 1px solid var(--border);
   }
+
+  @media (min-width: 1024px) {
+    section h2 { font-size: 2rem; }
+    #about p { font-size: 1.3rem; }
+    .skill-icon { width: 46px; height: 46px; }
+    .skill-card h3 { font-size: 1.25rem; }
+    .skill-card p { font-size: 1.1rem; }
+    .activity-card h3 { font-size: 1.3rem; }
+    .activity-card .summary,
+    details.activity-card .full-text { font-size: 1.12rem; }
+    .activity-card .read-more,
+    details.activity-card .read-more-label { font-size: 1.1rem; }
+    .contact .email { font-size: 1.5rem; }
+  }
 </style>
 </head>
 <body>
 
 <header class="top-nav">
-  <span class="site-name"><img class="site-logo" src="../assets/images/MS_Logo-128.png" alt="לוגו מאיר שמש" width="32" height="32">מאיר שמש</span>
+  <span class="site-name"><img class="site-logo" src="../assets/images/MS_Logo-128.png" alt="לוגו מאיר שמש" width="44" height="44">מאיר שמש</span>
   <nav>
     <a href="#about">אודות</a>
     <a href="#activities">פעילויות</a>
@@ -240,13 +254,13 @@
     </div>
     <div class="skill-card" style="--skill-color: var(--cat-green)">
       <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 12 10 4 20 4c0 10-8 16-16 16Z"/><line x1="4" y1="20" x2="13" y2="11"/></svg>
-      <h3>חדשנות אקולוגית וברת-קיימא</h3>
+      <h3>חדשנות אקולוגית <span style="white-space: nowrap">ובת-קיימא</span></h3>
       <p>התאמת טכנולוגיות מוכחות מתחום אחד למענה על אתגרים סביבתיים וחקלאיים בתחום אחר.</p>
     </div>
     <div class="skill-card" style="--skill-color: var(--cat-coral)">
       <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="13"/><line x1="12" y1="13" x2="5" y2="16.5"/><line x1="12" y1="13" x2="19" y2="16.5"/></svg>
       <h3>ניהול ארגוני ותפעולי</h3>
-      <p>ניהול צוותים, תהליכים ומשאבים לאורך פרויקטים מורכבים ורב-שלביים.</p>
+      <p>ניהול צוותים, תהליכים ומשאבים לאורך פרויקטים מורכבים <span style="white-space: nowrap">ורב-שלביים</span>.</p>
     </div>
   </div>
 </section>
@@ -273,7 +287,7 @@
       <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">קרא עוד ←</a>
     </article>
 
-    <details class="activity-card" style="--card-color: var(--brand)">
+    <details open class="activity-card" style="--card-color: var(--brand)">
       <summary>
         <h3>ייעוץ וניהול טכנולוגיות</h3>
         <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
@@ -287,7 +301,7 @@
       </p>
     </details>
 
-    <details class="activity-card" style="--card-color: var(--cat-purple)">
+    <details open class="activity-card" style="--card-color: var(--cat-purple)">
       <summary>
         <h3>מודיעין תחרותי</h3>
         <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
