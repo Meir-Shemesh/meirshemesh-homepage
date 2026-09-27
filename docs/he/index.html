@@ -2,6 +2,16 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('ms-theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>מאיר שמש</title>
 <meta name="description" content="מאיר שמש - ניתוח אסטרטגי ומודיעיני, הכוונת פרויקטי בינה מלאכותית, וחדשנות אקולוגית. פתרונות משולבים לאתגרים מורכבים.">
@@ -10,12 +20,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F3EFE8;
-    --bg-elevated: #FFFDFA;
-    --text: #221F1B;
-    --text-muted: #6D675E;
-    --border: #E4DDD0;
-    --brand: #7A2E2A;
+    --bg: #E8DFC9;
+    --bg-elevated: #FFFBF2;
+    --text: #1C1712;
+    --text-muted: #5F5240;
+    --border: #CDB98D;
+    --brand: #8F2C22;
+    --accent2: #A8702F;
     --hero-bg: #7A2E2A;
     --hero-text: #FFFDFA;
     --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .30);
@@ -26,12 +37,13 @@
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #16140F;
-      --bg-elevated: #211E18;
-      --text: #ECE7DD;
-      --text-muted: #A89F91;
-      --border: #3A352B;
-      --brand: #D68B86;
+      --bg: #1B1815;
+      --bg-elevated: #242019;
+      --text: #F1EBE0;
+      --text-muted: #B6AC98;
+      --border: #3C3527;
+      --brand: #DF6F5F;
+      --accent2: #DBA75C;
       --hero-bg: #4A1E1B;
       --hero-text: #F3EFE8;
       --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .55);
@@ -42,12 +54,13 @@
     }
   }
   :root[data-theme="dark"] {
-    --bg: #16140F;
-    --bg-elevated: #211E18;
-    --text: #ECE7DD;
-    --text-muted: #A89F91;
-    --border: #3A352B;
-    --brand: #D68B86;
+    --bg: #1B1815;
+    --bg-elevated: #242019;
+    --text: #F1EBE0;
+    --text-muted: #B6AC98;
+    --border: #3C3527;
+    --brand: #DF6F5F;
+    --accent2: #DBA75C;
     --hero-bg: #4A1E1B;
     --hero-text: #F3EFE8;
     --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .55);
@@ -55,6 +68,25 @@
     --cat-blue: #8FC0F0;
     --cat-green: #6FD3B8;
     --cat-coral: #E8956E;
+  }
+
+  @media print {
+    :root {
+      --bg: #E8DFC9 !important;
+      --bg-elevated: #FFFBF2 !important;
+      --text: #1C1712 !important;
+      --text-muted: #5F5240 !important;
+      --border: #CDB98D !important;
+      --brand: #8F2C22 !important;
+      --accent2: #A8702F !important;
+      --hero-bg: #7A2E2A !important;
+      --hero-text: #FFFDFA !important;
+      --avatar-shadow: 0 6px 18px rgba(0, 0, 0, .30) !important;
+      --cat-purple: #5C3D82 !important;
+      --cat-blue: #185FA5 !important;
+      --cat-green: #0F6E56 !important;
+      --cat-coral: #993C1D !important;
+    }
   }
 
   * { box-sizing: border-box; }
@@ -95,6 +127,32 @@
     color: var(--text);
   }
   .lang-switch:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+
+  .nav-controls { display: flex; align-items: center; gap: .6rem; }
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--accent2);
+    padding: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { border-color: var(--accent2); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   .hero {
     background: var(--hero-bg);
@@ -217,7 +275,13 @@
     <a href="#skills">כישורים</a>
     <a href="#contact">קשר</a>
   </nav>
-  <a class="lang-switch" href="../en/index.html" hreflang="en" lang="en" dir="ltr">EN</a>
+  <div class="nav-controls">
+    <button type="button" class="theme-toggle">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/><line x1="5" y1="5" x2="3.5" y2="3.5"/><line x1="19" y1="5" x2="20.5" y2="3.5"/><line x1="5" y1="19" x2="3.5" y2="20.5"/><line x1="19" y1="19" x2="20.5" y2="20.5"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="lang-switch" href="../en/index.html" hreflang="en" lang="en" dir="ltr">EN</a>
+  </div>
 </header>
 
 <section class="hero">
@@ -328,6 +392,36 @@
 </section>
 
 <footer>© מאיר שמש</footer>
+
+<script>
+  (function () {
+    var STORAGE_KEY = 'ms-theme';
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var LABEL_TO_DARK = 'מעבר למצב כהה';
+    var LABEL_TO_LIGHT = 'מעבר למצב בהיר';
+
+    function isDark() {
+      var attr = document.documentElement.getAttribute('data-theme');
+      if (attr === 'dark') return true;
+      if (attr === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function sync() {
+      var label = isDark() ? LABEL_TO_LIGHT : LABEL_TO_DARK;
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    }
+    sync();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+      sync();
+    });
+  })();
+</script>
 
 </body>
 </html>
