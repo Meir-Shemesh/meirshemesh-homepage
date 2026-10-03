@@ -8,6 +8,8 @@
 
 `.git` הוא symlink קיים אל `C:\git-data\meirshemesh-homepage.git` (מחוץ לעץ-המסונכרן-ע"י-OneDrive) - `git fsck --full --strict` נקי. ראו הרחבה בסעיף "OneDrive וסנכרון .git" ב-CLAUDE.md.
 
+מנגנון ההמשכיות (`/resume-project`, `/handoff`, הקובץ הזה, `PROJECT_LOG.md`) פעיל ומתוחזק מאז 2026-10-03.
+
 ## מה הושלם
 
 1. מבנה ראשוני: `docs/he/`, `docs/en/`, `docs/index.html` (redirect ל-he), `CLAUDE.md`, `README.md`.
@@ -16,15 +18,11 @@
 4. פלטת-צבעים חדשה (warm tan/dark, טוקן `--accent2` חדש) + כפתור toggle ידני ל-dark/light עם localStorage (מפתח `ms-theme`) + `@media print` שכופה light.
 5. תיקוני ניסוח בפסקת-האודות (שתי השפות, כולל שחזור משפט-הפתיחה ו-"the Israeli Prime Minister's Office" באנגלית), תיקון "מידע... רב-מקורי" ל"ממקורות רבים ומגוונים" בשני המקומות שהופיע, הסרת "תשעה"/"nine" מתיאור Geopolitics Tracker.
 6. הוספת קישור LinkedIn לסקשן יצירת-הקשר (שתי השפות).
-7. **(סשן נוכחי)** הקמת מנגנון resume-project/handoff: נוצרו `.claude/skills/resume-project/SKILL.md` ו-`.claude/skills/handoff/SKILL.md`, נוסף סעיף "המשכיות בין-סשנים" ל-CLAUDE.md, נוסף סעיף "OneDrive וסנכרון .git" ל-CLAUDE.md (עם ממצאי ה-fsck/symlink), נוצרו קובץ זה ו-`PROJECT_LOG.md` (המשתמש אישר).
+7. הקמת מנגנון resume-project/handoff: `.claude/skills/resume-project/SKILL.md`, `.claude/skills/handoff/SKILL.md`, סעיפי "המשכיות בין-סשנים" ו-"OneDrive וסנכרון .git" ב-CLAUDE.md, `HANDOFF.md`, `PROJECT_LOG.md`. **בוצע commit+push** (`73d7429`).
 
-## קבצים שנוצרו או שונו (בסשן הנוכחי)
+## קבצים שנוצרו או שונו
 
-- `.claude/skills/resume-project/SKILL.md` - חדש
-- `.claude/skills/handoff/SKILL.md` - חדש
-- `CLAUDE.md` - שונה (שני סעיפים נוספו: המשכיות בין-סשנים, OneDrive וסנכרון .git)
-- `HANDOFF.md` - חדש (קובץ זה)
-- `PROJECT_LOG.md` - חדש, לבקשת המשתמש
+כל השינויים עד כה כבר committed ו-pushed ל-`origin/master`. שום קובץ לא שונה בסשן הנוכחי (ראו "סשן אחרון").
 
 ## החלטות שהתקבלו
 
@@ -34,7 +32,6 @@
 
 ## משימות פתוחות
 
-- רצף ה-git (add + אישור הודעת commit + commit + push) לכל התוספות של הסשן הנוכחי (הסקילים, CLAUDE.md, HANDOFF.md) - ממתין לאישור המשתמש, ראו "בעיות ידועות".
 - `favicon` לאתר (מ-`MS_Logo.png`, באותה מוסכמה כמו geopolitics-tracker) - צוין כ"לשימוש עתידי" אבל עדיין לא בוצע.
 - לא אומת בפועל (על-ידי Claude) שהגדרות GitHub Pages/DNS עבור `meirshemesh.com` תואמות ל-`docs/CNAME` הקיים - זה נוסף ע"י המשתמש ישירות ב-GitHub, לא דרך הסשנים האלה.
 
@@ -45,8 +42,8 @@
 
 ## הצעד הבא המומלץ
 
-להציג `git status`/`git diff --cached --stat` של כל השינויים (סקילים + CLAUDE.md + HANDOFF.md + PROJECT_LOG.md), להציע הודעת commit, ולבצע commit+push רק אחרי אישור מפורש.
+אין משימה פתוחה דחופה. הצעד הבא הוא איזו מהמשימות הפתוחות שתירצה (favicon / אימות DNS), או כל בקשה חדשה.
 
 ## סשן אחרון
 
-**2026-10-03** - הקמת מנגנון resume-project/handoff לפרויקט: שני קבצי-סקיל (`resume-project`, `handoff`, שניהם `disable-model-invocation: true`), בדיקת `.git`/OneDrive (נמצא symlink קיים ותקין אל `C:\git-data\meirshemesh-homepage.git`, `git fsck` נקי, אין נתוני-סיכון נוספים בעץ), עדכון CLAUDE.md בהתאם, ויצירת HANDOFF.md ו-PROJECT_LOG.md (המשתמש אישר את האחרון). טרם בוצע commit - ממתין לאישור הודעת commit.
+**2026-10-03** - הפעלת `/handoff` בלי עבודה חדשה מאז ה-commit הקודם (`73d7429`, הקמת מנגנון resume-project/handoff). נבדק `git status` - נקי, אין מה לבצע לו commit. תוקן מידע ישן ב-HANDOFF.md שהתייחס ל-commit כ"ממתין לאישור" (הוא כבר בוצע ונדחף). `PROJECT_LOG.md` לא נגע - הסשן היה טכני-בלבד, בלי החלטה/ממצא/שינוי-אסטרטגי חדש.
