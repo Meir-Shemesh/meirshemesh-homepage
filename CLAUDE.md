@@ -14,8 +14,12 @@ docs/
   he/index.html     עמוד הבית בעברית - ברירת המחדל, RTL
   en/index.html     עמוד הבית באנגלית, LTR
   assets/images/    meir-photo.jpg (תמונת-פרופיל 480x480, מוצגת ב-hero כ-.avatar-photo בגודל 120px)
-                    MS_Logo.png (לוגו מקור 1024x1024 - נכס-מקור בלבד, לא מוצג ישירות; לשימוש עתידי, למשל favicon)
+                    MS_Logo.png (לוגו מקור 1024x1024 - נכס-מקור בלבד, לא מוצג ישירות; לשימוש עתידי)
                     MS_Logo-128.png (עותק 128x128 של הלוגו, מוצג בניווט העליון כ-.site-logo בגודל 32px)
+                    favicon.ico / favicon-32x32.png / favicon-16x16.png / apple-touch-icon.png
+                      (נוסף 2026-10-08, קרופ ריבועי-פנים הדוק מ-meir-photo.jpg - לא כל התמונה - כי
+                      favicon מוצג זעיר. מוגדרים ב-<head> של he/en/index.html וגם docs/index.html,
+                      באותם רכיבי rel/sizes שכבר קיימים ב-geopolitics-tracker)
 ```
 
 - `he/index.html` ו-`en/index.html` הם קבצים עצמאיים לגמרי, כל אחד עם `<style>` inline משלו. אין stylesheet משותף, אין templating, אין build - זהו עיצוב מכוון, לא פער שצריך לתקן. כל שינוי עיצובי צריך להיעשות בשני הקבצים בנפרד.
