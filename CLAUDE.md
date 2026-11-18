@@ -24,7 +24,16 @@ docs/
 
 - `he/index.html` ו-`en/index.html` הם קבצים עצמאיים לגמרי, כל אחד עם `<style>` inline משלו. אין stylesheet משותף, אין templating, אין build - זהו עיצוב מכוון, לא פער שצריך לתקן. כל שינוי עיצובי צריך להיעשות בשני הקבצים בנפרד.
 - אין תלות בין `he/` ל-`en/` מעבר לקישורי מתג-השפה ביניהם (`../en/index.html` ↔ `../he/index.html`).
-- אין JavaScript מעבר להכרחי: מתג השפה הוא קישור `<a>` רגיל, ואקורדיון ה"קרא עוד" (בכרטיסי "ייעוץ" ו"מודיעין תחרותי") בנוי על `<details>/<summary>` סמנטי ללא JS. שני הכרטיסים פתוחים כברירת מחדל (attribute `open`), והגולש יכול לכווץ אותם. קובץ ה-redirect העליון (`docs/index.html`) הוא היוצא מן הכלל היחיד - הוא משתמש ב-JS מינימלי (`location.replace`) כגיבוי ל-meta refresh. כפתור ה-dark/light toggle בניווט (ראו "Theming" למטה) הוא יוצא-מן-הכלל נוסף - מינימום JS נדרש למנגנון עצמו.
+- אין JavaScript מעבר להכרחי: מתג השפה הוא קישור `<a>` רגיל. יוצאי-הדופן, שבכל אחד מהם JS נדרש למנגנון עצמו בלבד: קובץ ה-redirect העליון (`docs/index.html`, `location.replace` כגיבוי ל-meta refresh), כפתור ה-dark/light toggle (ראו "Theming" למטה), וכפתורי הכיווץ באריחי "תחומי פעילות" (למטה).
+
+### אריחי "תחומי פעילות" (`#activities`)
+
+ארבעה אריחים (`article.activity-card`), בשני קבצי-השפה באותו מבנה:
+
+- **עליונים (AvantGuard, Geopolitics Tracker):** קישור `a.read-more` לאתר החיצוני ("לאתר X ←" / "Visit the X site →"), `target="_blank" rel="noopener"` - **בלי `noreferrer` במכוון**, כדי שאתרי-היעד יראו את מקור הכניסה. החץ ב-`aria-hidden`, ולקורא-מסך יש טקסט נסתר (`.sr-only`) "(נפתח בלשונית חדשה)" / "(opens in a new tab)".
+- **תחתונים (ייעוץ, מודיעין תחרותי):** טקסט מלא (`p.full-text` עם `id`) + `button.toggle-btn` עם `aria-expanded`/`aria-controls` (במקום `<details>/<summary>` שהיה קודם). ברירת מחדל: פתוח, כיתוב "הסתר"/"Hide" + חץ מעלה; מכווץ: "קרא עוד"/"Read more" + חץ מטה, והאריח מתכווץ לשורת הכותרת (`.is-collapsed` → `align-self: start`).
+- **Progressive enhancement:** הכפתור מגיע עם attribute `hidden` ב-HTML, וסקריפט קטן לפני `</body>` מסיר אותו ומחבר את הלחיצה. בלי JS - הטקסט המלא גלוי ואין כפתור מת. Enter/Space עובדים נייטיבית (`<button>`), ו-`:focus-visible` מצייר outline בצבע האריח (`--card-color`).
+- אין כרגע analytics באתר. אם יתווסף - לחבר אותו ל-`.read-more` ול-`.toggle-btn`, לא לטקסט הגלוי.
 
 ## פלטת-צבעים וגופן
 

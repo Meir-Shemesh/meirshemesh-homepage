@@ -14,7 +14,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>מאיר שמש</title>
-<meta name="description" content="מאיר שמש - ניתוח אסטרטגי ומודיעיני, הכוונת פרויקטי בינה מלאכותית, וחדשנות אקולוגית. פתרונות משולבים לאתגרים מורכבים.">
+<meta name="description" content="מאיר שמש. ניתוח אסטרטגי ומודיעיני, הכוונת פרויקטי בינה מלאכותית, וחדשנות אקולוגית. פתרונות משולבים לאתגרים מורכבים.">
 <link rel="icon" href="../assets/images/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
@@ -220,28 +220,55 @@
   .activity-card h3 { margin: 0 0 .6rem; font-size: 1.1rem; }
   .activity-card .summary { margin: 0 0 .85rem; color: var(--text-muted); font-size: .95rem; }
   .activity-card .read-more { font-weight: 700; color: var(--card-color); }
-  details.activity-card summary {
-    list-style: none;
-    cursor: pointer;
+  .activity-card .read-more:focus-visible {
+    outline: 3px solid var(--card-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .activity-card .card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: .75rem;
   }
-  details.activity-card summary::-webkit-details-marker { display: none; }
-  details.activity-card summary::marker { content: ""; }
-  details.activity-card summary h3 { margin: 0; }
-  details.activity-card .read-more-label {
-    font-weight: 700;
-    color: var(--card-color);
-    white-space: nowrap;
+  .activity-card .card-head h3 { margin: 0; }
+  .activity-card .toggle-btn {
     display: inline-flex;
     align-items: center;
     gap: .35rem;
+    flex-shrink: 0;
+    font: inherit;
+    font-weight: 700;
+    color: var(--card-color);
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    padding: .2rem .45rem;
+    white-space: nowrap;
+    cursor: pointer;
   }
-  details.activity-card .chevron { display: inline-block; transition: transform .2s; }
-  details.activity-card[open] .chevron { transform: rotate(90deg); }
-  details.activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+  .activity-card .toggle-btn[hidden] { display: none; }
+  .activity-card .toggle-btn:hover .toggle-text { text-decoration: underline; }
+  .activity-card .toggle-btn:focus-visible {
+    outline: 3px solid var(--card-color);
+    outline-offset: 2px;
+  }
+  .activity-card .toggle-icon { width: 1em; height: 1em; transition: transform .2s; }
+  .activity-card .toggle-btn[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); }
+  .activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+  .activity-card .full-text[hidden] { display: none; }
+  .activity-card.is-collapsed { align-self: start; }
 
   .contact { text-align: center; }
   .contact .email { font-size: 1.25rem; font-weight: 700; }
@@ -271,9 +298,9 @@
     .skill-card p { font-size: 1.1rem; }
     .activity-card h3 { font-size: 1.3rem; }
     .activity-card .summary,
-    details.activity-card .full-text { font-size: 1.12rem; }
+    .activity-card .full-text { font-size: 1.12rem; }
     .activity-card .read-more,
-    details.activity-card .read-more-label { font-size: 1.1rem; }
+    .activity-card .toggle-btn { font-size: 1.1rem; }
     .contact .email { font-size: 1.5rem; }
     .linkedin-link { font-size: 1.1rem; }
   }
@@ -307,7 +334,7 @@
 <section id="about">
   <h2>אודות</h2>
   <p>
-    פתרונות משולבים לאתגרים מורכבים - עיקרון זה מנחה את כל עבודתי המקצועית.
+    עיקרון הפתרונות המשולבים לאתגרים מורכבים מנחה את כל עבודתי המקצועית.
     לאחר כעשור של עיסוק בהוראה ובחינוך, שירתתי שנים רבות במשרד ראש הממשלה
     כאנליסט ומנהל מודיעין. מאז שנת 2020 אני מתמקד בייעוץ וניהול טכנולוגיות.
     בין השאר ניהלתי במשך מספר חודשים פרויקט לניטור אנטישמיות, נתתי שירותי
@@ -351,7 +378,7 @@
     <article class="activity-card" style="--card-color: var(--cat-green)">
       <h3>AvantGuard</h3>
       <p class="summary">פתרונות אקו-טכנולוגיים חדשניים, ובהם מערכת לייזר מבוססת AI להרחקת עגורים בעמק החולה.</p>
-      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">קרא עוד ←</a>
+      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">לאתר AvantGuard <span aria-hidden="true">←</span><span class="sr-only"> (נפתח בלשונית חדשה)</span></a>
     </article>
 
     <article class="activity-card" style="--card-color: var(--cat-blue)">
@@ -360,43 +387,46 @@
         מערכת שפיתחתי מן היסוד, המנטרת יומיום עיתונים מובילים בעולם
         ומפיקה השוואה בין המקורות השונים והאופן שבו כל אחד מהם ממסגר את
         אותם אירועים גאופוליטיים. פרויקט זה מהווה גם תרגיל מעשי בניהול
-        תהליכי פיתוח מונחי בינה מלאכותית - גישה שכבר מעצבת גם את עבודת
+        תהליכי פיתוח מונחי בינה מלאכותית, גישה שכבר מעצבת גם את עבודת
         הייעוץ שלי.
       </p>
-      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">קרא עוד ←</a>
+      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">לאתר Geopolitics Tracker <span aria-hidden="true">←</span><span class="sr-only"> (נפתח בלשונית חדשה)</span></a>
     </article>
 
-    <details open class="activity-card" style="--card-color: var(--brand)">
-      <summary>
+    <article class="activity-card" style="--card-color: var(--brand)">
+      <div class="card-head">
         <h3>ייעוץ וניהול טכנולוגיות</h3>
-        <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
-      </summary>
-      <p class="full-text">
-        פתרונות משולבים לאתגרים מורכבים - עיקרון זה מנחה גם את עבודת
+        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="consulting-text" hidden>
+          <span class="toggle-text">הסתר</span><span class="sr-only"> את פירוט ייעוץ וניהול טכנולוגיות</span>
+          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <p class="full-text" id="consulting-text">
+        עיקרון הפתרונות המשולבים לאתגרים מורכבים מנחה גם את עבודת
         הייעוץ שלי. אני מביא לכל פרויקט שילוב של גישה טכנולוגית וניסיון
         ניהולי רב-שנים בפרויקטים מורכבים משולבי-טכנולוגיה, לצד יכולת
         לזהות טכנולוגיה שהוכיחה את עצמה בתחום אחד ולהתאימה, תוך שימוש
         במאפייניה ויתרונותיה היחסיים, למענה לאתגרים בתחום שונה לגמרי.
       </p>
-    </details>
+    </article>
 
-    <details open class="activity-card" style="--card-color: var(--cat-purple)">
-      <summary>
+    <article class="activity-card" style="--card-color: var(--cat-purple)">
+      <div class="card-head">
         <h3>מודיעין תחרותי</h3>
-        <span class="read-more-label"><span>קרא עוד</span><span class="chevron" aria-hidden="true">›</span></span>
-      </summary>
-      <p class="full-text">
-        מתן שירותי מודיעין תחרותי, המשלבים הבנה עמוקה של העולם המודיעיני
-        עם ביצוע מחקרים וחקירות ייחודיים. כל פרויקט נפתח במיצוי מדויק של
-        הצורך - הגדרת השאלה המודיעינית שהלקוח נדרש למענה עליה, בין אם
-        עניינה מועסקים, מועמדים, שותפים פוטנציאליים או מתחרים - וממשיך
-        באיסוף מידע באמצעות מגוון כלים מעולם המודיעין הגלוי ומאגרי מידע
-        נוספים. השירות ניתן ללקוחות עסקיים ברחבי העולם, והתוצר מונגש
-        בבהירות ובדיוק ברמה הגבוהה ביותר, כולל המלצות מעשיות. מתודולוגיית
-        ניתוח המידע ממקורות רבים ומגוונים העומדת בבסיס השירות הזה מלווה אותי גם
-        בפרויקטים טכנולוגיים נוספים שאני מוביל.
+        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="intel-text" hidden>
+          <span class="toggle-text">הסתר</span><span class="sr-only"> את פירוט מודיעין תחרותי</span>
+          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <p class="full-text" id="intel-text">
+        שירותי מודיעין תחרותי המשלבים הבנה עמוקה של עולם המודיעין עם מחקרים
+        וחקירות ייחודיים. כל חקירה נתפרת בהתאמה אישית, בעקבות בירור מעמיק
+        מול הלקוח שמזקק את הצורך ומדייק את השאלה המודיעינית. בהמשך נאסף מידע
+        ממקורות גלויים ומאגרי מידע נוספים. השירות ניתן ללקוחות עסקיים ברחבי
+        העולם, והתוצר כולל המלצות מעשיות. מתודולוגיית ניתוח המידע שבבסיסו
+        מלווה אותי גם בפרויקטים טכנולוגיים אחרים.
       </p>
-    </details>
+    </article>
 
   </div>
 </section>
@@ -440,6 +470,27 @@
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
       sync();
+    });
+  })();
+
+  (function () {
+    var buttons = document.querySelectorAll('#activities .toggle-btn');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var card = btn.closest('.activity-card');
+      var text = btn.querySelector('.toggle-text');
+      if (!panel || !card || !text) return;
+      function render(expanded) {
+        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        text.textContent = expanded ? 'הסתר' : 'קרא עוד';
+        panel.hidden = !expanded;
+        card.classList.toggle('is-collapsed', !expanded);
+      }
+      btn.addEventListener('click', function () {
+        render(btn.getAttribute('aria-expanded') !== 'true');
+      });
+      render(true);
+      btn.hidden = false;
     });
   })();
 </script>

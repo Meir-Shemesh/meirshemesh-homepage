@@ -14,7 +14,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meir Shemesh</title>
-<meta name="description" content="Meir Shemesh - strategic and intelligence analysis, AI project orchestration, and ecological innovation. Integrated solutions to complex challenges.">
+<meta name="description" content="Meir Shemesh. Strategic and intelligence analysis, AI project orchestration, and ecological innovation. Integrated solutions to complex challenges.">
 <link rel="icon" href="../assets/images/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
@@ -220,28 +220,55 @@
   .activity-card h3 { margin: 0 0 .6rem; font-size: 1.1rem; }
   .activity-card .summary { margin: 0 0 .85rem; color: var(--text-muted); font-size: .95rem; }
   .activity-card .read-more { font-weight: 700; color: var(--card-color); }
-  details.activity-card summary {
-    list-style: none;
-    cursor: pointer;
+  .activity-card .read-more:focus-visible {
+    outline: 3px solid var(--card-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .activity-card .card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: .75rem;
   }
-  details.activity-card summary::-webkit-details-marker { display: none; }
-  details.activity-card summary::marker { content: ""; }
-  details.activity-card summary h3 { margin: 0; }
-  details.activity-card .read-more-label {
-    font-weight: 700;
-    color: var(--card-color);
-    white-space: nowrap;
+  .activity-card .card-head h3 { margin: 0; }
+  .activity-card .toggle-btn {
     display: inline-flex;
     align-items: center;
     gap: .35rem;
+    flex-shrink: 0;
+    font: inherit;
+    font-weight: 700;
+    color: var(--card-color);
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    padding: .2rem .45rem;
+    white-space: nowrap;
+    cursor: pointer;
   }
-  details.activity-card .chevron { display: inline-block; transition: transform .2s; }
-  details.activity-card[open] .chevron { transform: rotate(90deg); }
-  details.activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+  .activity-card .toggle-btn[hidden] { display: none; }
+  .activity-card .toggle-btn:hover .toggle-text { text-decoration: underline; }
+  .activity-card .toggle-btn:focus-visible {
+    outline: 3px solid var(--card-color);
+    outline-offset: 2px;
+  }
+  .activity-card .toggle-icon { width: 1em; height: 1em; transition: transform .2s; }
+  .activity-card .toggle-btn[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); }
+  .activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
+  .activity-card .full-text[hidden] { display: none; }
+  .activity-card.is-collapsed { align-self: start; }
 
   .contact { text-align: center; }
   .contact .email { font-size: 1.25rem; font-weight: 700; }
@@ -271,9 +298,9 @@
     .skill-card p { font-size: 1.1rem; }
     .activity-card h3 { font-size: 1.3rem; }
     .activity-card .summary,
-    details.activity-card .full-text { font-size: 1.12rem; }
+    .activity-card .full-text { font-size: 1.12rem; }
     .activity-card .read-more,
-    details.activity-card .read-more-label { font-size: 1.1rem; }
+    .activity-card .toggle-btn { font-size: 1.1rem; }
     .contact .email { font-size: 1.5rem; }
     .linkedin-link { font-size: 1.1rem; }
   }
@@ -307,7 +334,7 @@
 <section id="about">
   <h2>About</h2>
   <p>
-    Integrated solutions to complex challenges - this principle guides all
+    The principle of integrated solutions to complex challenges guides all
     of my professional work. After roughly a decade in teaching and
     education, I served for many years at the Israeli Prime Minister's
     Office as an intelligence analyst and manager. Since 2020, I have
@@ -354,7 +381,7 @@
     <article class="activity-card" style="--card-color: var(--cat-green)">
       <h3>AvantGuard</h3>
       <p class="summary">Innovative eco-technological solutions, including an AI-based laser system to deter cranes in the Hula Valley.</p>
-      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">Read more →</a>
+      <a class="read-more" href="https://avantguard-ecotech.com" target="_blank" rel="noopener">Visit the AvantGuard site <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
     </article>
 
     <article class="activity-card" style="--card-color: var(--cat-blue)">
@@ -364,48 +391,52 @@
         newspapers daily and generating cross-source comparisons of how
         each frames the same geopolitical events. The project also
         doubles as a hands-on exercise in managing AI-orchestrated
-        development - an approach that now shapes my consulting work as
+        development, an approach that now shapes my consulting work as
         well.
       </p>
-      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">Read more →</a>
+      <a class="read-more" href="https://geopolitics.meirshemesh.com" target="_blank" rel="noopener">Visit the Geopolitics Tracker site <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
     </article>
 
-    <details open class="activity-card" style="--card-color: var(--brand)">
-      <summary>
+    <article class="activity-card" style="--card-color: var(--brand)">
+      <div class="card-head">
         <h3>Technology Consulting and Management</h3>
-        <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>
-      </summary>
-      <p class="full-text">
-        Integrated solutions to complex challenges - this principle guides
+        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="consulting-text" hidden>
+          <span class="toggle-text">Hide</span><span class="sr-only"> Technology Consulting and Management details</span>
+          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <p class="full-text" id="consulting-text">
+        The principle of integrated solutions to complex challenges guides
         my consulting work as well. I bring to every project a
         technological approach paired with years of managerial experience
-        in complex, technology-driven initiatives, along with the ability
-        to recognize a technology proven in one field and adapt it -
-        drawing on its distinctive traits and relative strengths - to meet
-        a completely different challenge elsewhere.
+        in complex, technology-integrated projects, along with the ability
+        to recognize a technology proven in one field and adapt it,
+        drawing on its distinctive traits and relative strengths, to meet
+        challenges in an entirely different field.
       </p>
-    </details>
+    </article>
 
-    <details open class="activity-card" style="--card-color: var(--cat-purple)">
-      <summary>
+    <article class="activity-card" style="--card-color: var(--cat-purple)">
+      <div class="card-head">
         <h3>Competitive Intelligence</h3>
-        <span class="read-more-label"><span>Read more</span><span class="chevron" aria-hidden="true">›</span></span>
-      </summary>
-      <p class="full-text">
-        Competitive intelligence services that combine deep understanding
-        of the intelligence world with dedicated research and
-        investigations. Every engagement begins by precisely defining the
-        client's actual intelligence question - whether it concerns
-        employees, candidates, potential partners or competitors - and
-        proceeds through information gathering using a range of
-        open-source intelligence tools and additional databases. The
-        service is provided to business clients worldwide, with findings
-        delivered clearly and precisely at the highest standard, including
-        practical recommendations. The same multi-source analysis
-        methodology underlying this service also carries through into
-        other technology projects I lead.
+        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="intel-text" hidden>
+          <span class="toggle-text">Hide</span><span class="sr-only"> Competitive Intelligence details</span>
+          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <p class="full-text" id="intel-text">
+        Competitive intelligence services that combine a deep understanding
+        of the intelligence world with distinctive research and
+        investigations. Each investigation is tailor-made, built on an
+        in-depth consultation with the client that distills the need and
+        sharpens the intelligence question. Information is then gathered
+        from open sources and additional databases. The service is
+        provided to business clients worldwide, and the deliverable
+        includes practical recommendations. The information-analysis
+        methodology underlying it also informs my work on other technology
+        projects.
       </p>
-    </details>
+    </article>
 
   </div>
 </section>
@@ -449,6 +480,27 @@
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
       sync();
+    });
+  })();
+
+  (function () {
+    var buttons = document.querySelectorAll('#activities .toggle-btn');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var card = btn.closest('.activity-card');
+      var text = btn.querySelector('.toggle-text');
+      if (!panel || !card || !text) return;
+      function render(expanded) {
+        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        text.textContent = expanded ? 'Hide' : 'Read more';
+        panel.hidden = !expanded;
+        card.classList.toggle('is-collapsed', !expanded);
+      }
+      btn.addEventListener('click', function () {
+        render(btn.getAttribute('aria-expanded') !== 'true');
+      });
+      render(true);
+      btn.hidden = false;
     });
   })();
 </script>
