@@ -236,39 +236,7 @@
     white-space: nowrap;
     border: 0;
   }
-  .activity-card .card-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: .75rem;
-  }
-  .activity-card .card-head h3 { margin: 0; }
-  .activity-card .toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .35rem;
-    flex-shrink: 0;
-    font: inherit;
-    font-weight: 700;
-    color: var(--card-color);
-    background: transparent;
-    border: 0;
-    border-radius: 6px;
-    padding: .2rem .45rem;
-    white-space: nowrap;
-    cursor: pointer;
-  }
-  .activity-card .toggle-btn[hidden] { display: none; }
-  .activity-card .toggle-btn:hover .toggle-text { text-decoration: underline; }
-  .activity-card .toggle-btn:focus-visible {
-    outline: 3px solid var(--card-color);
-    outline-offset: 2px;
-  }
-  .activity-card .toggle-icon { width: 1em; height: 1em; transition: transform .2s; }
-  .activity-card .toggle-btn[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); }
-  .activity-card .full-text { margin: .9rem 0 0; color: var(--text); font-size: .95rem; }
-  .activity-card .full-text[hidden] { display: none; }
-  .activity-card.is-collapsed { align-self: start; }
+  .activity-card .full-text { margin: 0; color: var(--text); font-size: .95rem; }
 
   .contact { text-align: center; }
   .contact .email { font-size: 1.25rem; font-weight: 700; }
@@ -299,8 +267,7 @@
     .activity-card h3 { font-size: 1.3rem; }
     .activity-card .summary,
     .activity-card .full-text { font-size: 1.12rem; }
-    .activity-card .read-more,
-    .activity-card .toggle-btn { font-size: 1.1rem; }
+    .activity-card .read-more { font-size: 1.1rem; }
     .contact .email { font-size: 1.5rem; }
     .linkedin-link { font-size: 1.1rem; }
   }
@@ -394,14 +361,8 @@
     </article>
 
     <article class="activity-card" style="--card-color: var(--brand)">
-      <div class="card-head">
-        <h3>ייעוץ וניהול טכנולוגיות</h3>
-        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="consulting-text" hidden>
-          <span class="toggle-text">הסתר</span><span class="sr-only"> את פירוט ייעוץ וניהול טכנולוגיות</span>
-          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-      </div>
-      <p class="full-text" id="consulting-text">
+      <h3>ייעוץ וניהול טכנולוגיות</h3>
+      <p class="full-text">
         עיקרון הפתרונות המשולבים לאתגרים מורכבים מנחה גם את עבודת
         הייעוץ שלי. אני מביא לכל פרויקט שילוב של גישה טכנולוגית וניסיון
         ניהולי רב-שנים בפרויקטים מורכבים משולבי-טכנולוגיה, לצד יכולת
@@ -411,14 +372,8 @@
     </article>
 
     <article class="activity-card" style="--card-color: var(--cat-purple)">
-      <div class="card-head">
-        <h3>מודיעין תחרותי</h3>
-        <button type="button" class="toggle-btn" aria-expanded="true" aria-controls="intel-text" hidden>
-          <span class="toggle-text">הסתר</span><span class="sr-only"> את פירוט מודיעין תחרותי</span>
-          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-      </div>
-      <p class="full-text" id="intel-text">
+      <h3>מודיעין תחרותי</h3>
+      <p class="full-text">
         שירותי מודיעין תחרותי המשלבים הבנה עמוקה של עולם המודיעין עם מחקרים
         וחקירות ייחודיים. כל חקירה נתפרת בהתאמה אישית, בעקבות בירור מעמיק
         מול הלקוח שמזקק את הצורך ומדייק את השאלה המודיעינית. בהמשך נאסף מידע
@@ -473,26 +428,6 @@
     });
   })();
 
-  (function () {
-    var buttons = document.querySelectorAll('#activities .toggle-btn');
-    Array.prototype.forEach.call(buttons, function (btn) {
-      var panel = document.getElementById(btn.getAttribute('aria-controls'));
-      var card = btn.closest('.activity-card');
-      var text = btn.querySelector('.toggle-text');
-      if (!panel || !card || !text) return;
-      function render(expanded) {
-        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        text.textContent = expanded ? 'הסתר' : 'קרא עוד';
-        panel.hidden = !expanded;
-        card.classList.toggle('is-collapsed', !expanded);
-      }
-      btn.addEventListener('click', function () {
-        render(btn.getAttribute('aria-expanded') !== 'true');
-      });
-      render(true);
-      btn.hidden = false;
-    });
-  })();
 </script>
 
 </body>
